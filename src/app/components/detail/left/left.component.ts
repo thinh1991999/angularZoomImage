@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-left',
@@ -15,7 +15,7 @@ export class LeftComponent {
   leftScope: string = '0px';
   class: object = {};
   timeOut: any;
-  constructor() {}
+  constructor(private zone: NgZone) {}
   ngOnInit() {
     console.log(this.imgs);
   }
@@ -33,14 +33,13 @@ export class LeftComponent {
     this.showImgScope = false;
   }
   onMousemove(e: MouseEvent) {
-    const { target, clientX, clientY } = e;
-    if (target) {
-      this.timeOut = setTimeout(() => {
+    this.zone.runOutsideAngular(() => {
+      const { target, clientX, clientY } = e;
+      if (target) {
         const { offsetHeight, offsetWidth } = target as HTMLDivElement;
         const { left, top } = (
           target as HTMLDivElement
         ).getBoundingClientRect();
-
         const cx = offsetWidth / 200;
         const cy = offsetHeight / 200;
         const x = clientX - left;
@@ -59,11 +58,12 @@ export class LeftComponent {
         if (yLens < 0) {
           yLens = 0;
         }
-        this.topScope = `${yLens}px`;
-        this.leftScope = `${yLens}px`;
         const position = '-' + xLens * cx + 'px -' + yLens * cy + 'px';
         this.positionScope = position;
-      }, 5);
-    }
+        this.topScope = `${yLens}px`;
+        this.leftScope = `${xLens}px`;
+        console.log(xLens, yLens);
+      }
+    });
   }
 }

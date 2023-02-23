@@ -1,0 +1,17 @@
+<div class="fixed top-0 left-0 bottom-0 right-0 z-[51]">
+  <div class="relative w-full h-full">
+    <div
+      class="absolute top-0 left-0 bottom-0 right-0 bg-black opacity-50"
+    ></div>
+    <div class="relative flex justify-center items-center w-full h-full">
+      <div class="w-[500px]">
+        <div class="flex justify-end relative mb-5">
+          <button (click)="handleClose()">
+            <img src="/assets/icon-close.svg" alt="" />
+          </button>
+        </div>
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

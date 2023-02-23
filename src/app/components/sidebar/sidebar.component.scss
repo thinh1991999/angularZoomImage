@@ -1,0 +1,25 @@
+.sidebar {
+  animation: showRight 0.5s linear 1 forwards;
+}
+
+.sidebar--off {
+  animation: sidebarOff 0.5s linear 1 forwards;
+}
+
+@keyframes showRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sidebarOff {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

@@ -1,0 +1,25 @@
+<div class="fixed top-0 left-0 bottom-0 right-0 z-50">
+  <div class="w-full h-full relative">
+    <div
+      class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-50"
+    ></div>
+    <div
+      class="relative w-[300px] bg-white h-full py-6 pl-6"
+      [ngClass]="[show ? 'sidebar' : 'sidebar--off']"
+    >
+      <button (click)="handleClose()">
+        <img src="/assets/icon-close.svg" class="fill-neutral-200" alt="" />
+      </button>
+      <nav class="mt-10">
+        <ul class="flex flex-col">
+          <li
+            class="h-full flex items-center cursor-pointer font-bold py-2 border-r-[4px] border-transparent hover:border-Orange"
+            *ngFor="let item of navs"
+          >
+            <span>{{ item }}</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

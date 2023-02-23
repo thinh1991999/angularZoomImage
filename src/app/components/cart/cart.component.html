@@ -1,0 +1,111 @@
+<div class="cursor-pointer relative group">
+  <button class="md:hidden" (click)="handleShowMobile()">
+    <img src="/assets/icon-cart.svg" alt="" />
+  </button>
+  <button class="md:block hidden">
+    <img src="/assets/icon-cart.svg" alt="" />
+  </button>
+  <div
+    *ngIf="cart.length > 0"
+    class="absolute top-[-10px] right-[-10px] px-2 bg-Orange text-white rounded-md text-xs"
+  >
+    <span>{{ cart.length }}</span>
+  </div>
+  <div
+    class="hidden md:hidden md:group-hover:block absolute top-[calc(100%_+_10px)] bg-white rounded-lg shadow-lg w-[300px] right-[50%] translate-x-1/2 drop_cart"
+  >
+    <div class="p-4 border-b border-gray-200 shadow-sm">
+      <h3 class="font-bold">Cart</h3>
+    </div>
+    <div class="p-5">
+      <div *ngIf="cart.length > 0; else empty" class="">
+        <div *ngFor="let item of cart" class="text-sm flex items-center">
+          <div class="mr-3 w-[50px] h-50px overflow-hidden rounded-sm">
+            <img
+              src="{{ item.imgs[0].thumbnail }}"
+              alt=""
+              class="w-full h-full"
+            />
+          </div>
+          <div
+            class="font-semibold text-sm text-Grayish-blue flex-1 overflow-hidden"
+          >
+            <h3>{{ item.name }}</h3>
+            <div class="flex items-center">
+              <span>${{ formatnb(item.realPrice) }}</span>
+              <span class="mx-1">x</span>
+              <span>{{ item.count }}</span>
+              <span class="ml-2 font-bold text-black"
+                >${{ formatnb(item.realPrice * item.count) }}</span
+              >
+            </div>
+          </div>
+          <button class="ml-2 hover:opacity-70" (click)="handleDelete(item.id)">
+            <img src="/assets/icon-delete.svg" alt="" />
+          </button>
+        </div>
+        <button
+          class="py-3 mt-5 rounded-md bg-Orange hover:opacity-70 text-white font-bold w-full"
+        >
+          Checkout
+        </button>
+      </div>
+
+      <ng-template #empty>
+        <div class="py-10 flex justify-center items-center">
+          <span class="font-medium">Your cart is empty</span>
+        </div></ng-template
+      >
+    </div>
+  </div>
+</div>
+<div
+  *ngIf="showCartMobile"
+  class="md:hidden fixed top-[100px] left-0 right-0 flex justify-center"
+>
+  <div class="bg-white rounded-lg shadow-lg w-[300px]">
+    <div class="p-4 border-b border-gray-200 shadow-sm">
+      <h3 class="font-bold">Cart</h3>
+    </div>
+    <div class="p-5">
+      <div *ngIf="cart.length > 0; else empty" class="">
+        <div *ngFor="let item of cart" class="text-sm flex items-center">
+          <div class="mr-3 w-[50px] h-50px overflow-hidden rounded-sm">
+            <img
+              src="{{ item.imgs[0].thumbnail }}"
+              alt=""
+              class="w-full h-full"
+            />
+          </div>
+          <div
+            class="font-semibold text-sm text-Grayish-blue flex-1 overflow-hidden"
+          >
+            <h3>{{ item.name }}</h3>
+            <div class="flex items-center">
+              <span>${{ formatnb(item.realPrice) }}</span>
+              <span class="mx-1">x</span>
+              <span>{{ item.count }}</span>
+              <span class="ml-2 font-bold text-black"
+                >${{ formatnb(item.realPrice * item.count) }}</span
+              >
+            </div>
+          </div>
+          <button class="ml-2 hover:opacity-70" (click)="handleDelete(item.id)">
+            <img src="/assets/icon-delete.svg" alt="" />
+          </button>
+        </div>
+        <button
+          class="py-3 mt-5 rounded-md bg-Orange hover:opacity-70 text-white font-bold w-full"
+        >
+          Checkout
+        </button>
+      </div>
+
+      <ng-template #empty>
+        <div class="py-10 flex justify-center items-center">
+          <span class="font-medium">Your cart is empty</span>
+        </div></ng-template
+      >
+    </div>
+  </div>
+</div>

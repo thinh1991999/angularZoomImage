@@ -1,0 +1,33 @@
+<header class="fixed top-0 left-0 right-0 bg-white z-50">
+  <div
+    class="lg:px-8 container m-auto flex justify-between items-center h-[80px] border-b border-gray-200 shadow-shadow"
+  >
+    <div class="flex items-center h-full">
+      <button class="mr-3 md:hidden" (click)="handleShow()">
+        <img src="/assets/icon-menu.svg" alt="" />
+      </button>
+      <a href="" class="block text-3xl font-bold">
+        <img src="/assets/logo.svg" alt="" />
+      </a>
+      <nav class="ml-10 h-full md:block hidden">
+        <ul class="flex items-center h-full">
+          <li
+            class="h-full flex items-center cursor-pointer px-3 border-b-[3px] border-transparent hover:border-Orange"
+            *ngFor="let item of navData"
+          >
+            <span>{{ item }}</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="flex items-center">
+      <app-cart/>
+      <div class="w-[30px] sm:w-[35px] md:w-[50px] ml-3 md:ml-10 cursor-pointer">
+        <img src="/assets/image-avatar.png" alt="" class="w-full" />
+      </div>
+    </div>
+  </div>
+</header>
+<div [ngClass]="[showSideBar?'block':'hidden']">
+  <app-sidebar [navs]="navData"  (close)="handleClose()"/>
+</div>

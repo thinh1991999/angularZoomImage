@@ -1,31 +1,31 @@
-import { Component, ElementRef, Input, NgZone, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  NgZone,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
-  selector: 'app-left',
-  templateUrl: './left.component.html',
-  styleUrls: ['./left.component.scss'],
+  selector: 'app-ImgScope',
+  templateUrl: './ImgScope.component.html',
+  styleUrls: ['./ImgScope.component.css'],
 })
-export class LeftComponent {
+export class ImgScopeComponent implements OnInit {
   @ViewChild('mainImg', { read: ElementRef }) mainImgEL?: ElementRef;
   @ViewChild('lens') lensEL?: ElementRef;
-  @Input() imgs: any[] = [];
-  activeIdx = 0;
-  showModal: boolean = false;
+  @Input() img?: string;
+  @Output() handleModal = new EventEmitter();
   showImgScope: boolean = false;
   positionScope: string = '0px 0px';
   topScope: string = '0px';
   leftScope: string = '0px';
   constructor(private zone: NgZone) {}
-  ngOnInit() {
-    console.log(this.imgs);
-  }
-  handleHover(idx: number) {
-    this.activeIdx = idx;
-  }
 
-  handleShowModal() {
-    this.showModal = !this.showModal;
-  }
+  ngOnInit() {}
   onMouseenter() {
     this.showImgScope = true;
   }
@@ -68,5 +68,9 @@ export class LeftComponent {
         }
       }
     });
+  }
+
+  click() {
+    this.handleModal.emit();
   }
 }

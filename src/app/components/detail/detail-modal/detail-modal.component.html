@@ -1,19 +1,20 @@
 <div class="rounded-lg cursor-pointer relative">
-  <div class="w-full rounded-md overflow-hidden">
+  <!-- <div class="w-full rounded-md overflow-hidden">
     <img
       src="{{ imgs[activeIdx].small }}"
       alt=""
       class="object-contain w-full"
     />
-  </div>
+  </div> -->
+  <app-ImgScope [img]="imgs[activeIdx].small"/>
   <button
     (click)="handleBack()"
-    class="z-10 absolute top-1/2 left-0 w-[50px] h-[50px] rounded-full bg-white -translate-y-1/2 flex justify-center items-center hover:opacity-70"
+    class="z-10 absolute top-1/2 -left-5 w-[50px] h-[50px] rounded-full bg-white -translate-y-1/2 flex justify-center items-center hover:opacity-70"
   >
     <img src="/assets/icon-previous.svg" alt="" />
   </button>
   <button
-    class="z-10 absolute top-1/2 right-0 w-[50px] h-[50px] rounded-full bg-white -translate-y-1/2 flex justify-center items-center hover:opacity-70"
+    class="z-10 absolute top-1/2 -right-5 w-[50px] h-[50px] rounded-full bg-white -translate-y-1/2 flex justify-center items-center hover:opacity-70"
     (click)="handleNext()"
   >
     <img src="/assets/icon-next.svg" alt="" />

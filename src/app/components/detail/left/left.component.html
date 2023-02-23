@@ -1,13 +1,14 @@
 <div class="md:block hidden">
-  <div class="mb-5 cursor-pointer relative" (click)="handleShowModal()" (mouseenter)="onMouseenter()" (mousemove)="onMousemove($event)" (mouseleave)="onMouseleave()">
+  <!-- <div #mainImg class="mb-5 cursor-pointer relative" (click)="handleShowModal()" (mouseenter)="onMouseenter()" (mousemove)="onMousemove($event)" (mouseleave)="onMouseleave()">
     <div class="relative rounded-lg overflow-hidden" >
       <img src="{{ imgs[activeIdx].small }}" alt="" />
     </div>
-    <div *ngIf="showImgScope" class=" absolute  w-[376px] rounded-full h-[376px] z-50 shadow" 
-    [ngStyle]="{'background-image': 'url(' + imgs[activeIdx].small + ')','background-size':'706.88px 706.88px','background-position':positionScope,left:leftScope,top:topScope}"
+    <div #lens *ngIf="showImgScope" class=" absolute  w-[200px] h-[200px] rounded-full  z-50 shadow bg-no-repeat"
+    [ngStyle]="{'background-image': 'url(' + imgs[activeIdx].small + ')'}"
     >
     </div>
-  </div>
+  </div> -->
+  <app-ImgScope [img]="imgs[activeIdx].small" (handleModal)="handleShowModal()"/>
   <div class="flex flex-wrap -m-2">
     <div *ngFor="let img of imgs; index as i" class="p-2 w-1/4">
       <div

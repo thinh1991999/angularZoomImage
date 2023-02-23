@@ -1,0 +1,18 @@
+<div
+  #mainImg
+  class="mb-5 cursor-pointer relative"
+  (mouseenter)="onMouseenter()"
+  (mousemove)="onMousemove($event)"
+  (mouseleave)="onMouseleave()"
+  (click)="click()"
+>
+  <div class="relative rounded-lg overflow-hidden">
+    <img src="{{ img }}" alt="" />
+  </div>
+  <div
+    #lens
+    *ngIf="showImgScope"
+    class="absolute w-[200px] h-[200px] rounded-full z-50 shadow bg-no-repeat"
+    [ngStyle]="{ 'background-image': 'url(' + img + ')' }"
+  ></div>
+</div>

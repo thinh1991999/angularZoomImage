@@ -9,10 +9,22 @@ import { HeaderComponent } from './components/header/header.component';
 import { GlobalService } from './services/global.service';
 import { CartComponent } from './components/cart/cart.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CartComponent, SidebarComponent],
-  imports: [BrowserModule, AppRoutingModule, DetailModule, FormsModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    CartComponent,
+    SidebarComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    DetailModule,
+    FormsModule,
+    CommonModule,
+  ],
   providers: [GlobalService],
   bootstrap: [AppComponent],
   exports: [FormsModule],

@@ -6,6 +6,7 @@ import { LeftComponent } from './left/left.component';
 import { RightComponent } from './right/right.component';
 import { ModalComponent } from '../modal/modal.component';
 import { DetailModalComponent } from './detail-modal/detail-modal.component';
+import { ImgScopeComponent } from './ImgScope/ImgScope.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DetailModalComponent } from './detail-modal/detail-modal.component';
     RightComponent,
     ModalComponent,
     DetailModalComponent,
+    ImgScopeComponent,
   ],
   imports: [CommonModule, FormsModule],
   exports: [DetailComponent],
